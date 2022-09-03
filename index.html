@@ -6,38 +6,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/70fab30855.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <div id="content">
-    <div id="sidebar">
-          <div id="task-form">
-            <form action="" method="">
-              <label for="title">Task:</label>
-              <input type="text" name="title" id="title">
-              <label for="description">Description:</label>
-              <input type="text" name="description" id="description">
-              <label for="date">Due Date:</label>
-              <input type="date" name="date" id="date">
-              <label for="priority">Priority:</label>
-              <select name="priority" id="priority">
-                <option value="immediate">Immediate</option>
-                <option value="high">High</option>
-                <option value="medium">Medium</option>
-                <option value="low">Low</option>
-              </select>
-              <label for="notes">Notes:</label>
-              <input type="text" name="notes" id="notes">
-              <button type="submit">Add Task</button>
-            </form>
+      <div class="grid-container">
+        <div id="left-sidebar" class="sidebar">
+            <button id="hide"><i class="fa-sharp fa-solid fa-bars"></i></button>
+          <div id="task-form" class="form-display">
+            <div class="task-heading">Create Task</div>
+                <form action="" method="">
+                  <label for="form-heading">Task:</label>
+                  <input type="text" name="form-heading" id="form-heading">
+                  <label for="form-description">Description:</label>
+                  <input type="text" name="form-description" id="form-description">
+                  <label for="form-date">Due Date:</label>
+                  <input type="date" name="form-date" id="form-date">
+                  <label for="form-priority">Priority:</label>
+                  <select name="form-priority" id="form-priority">
+                    <option value="high">High</option>
+                    <option value="medium">Medium</option>
+                    <option value="low">Low</option>
+                  </select>
+                  <button id="submit-task" type="submit">Add Task</button>
+                </form>
           </div>
-    </div>
-    <div id="toDoList">
-      <h1>Example</h1>
-    </div>
-    <div id="right-bar">
-      <h2>right-bar</h2>
-    </div>
-  </div>
-<script src="main.js"></script>
+        </div>
+        <div id="toDoList" class="main-content">
+          <h1>Example</h1>
+        </div>
+      </div>
+  <script src="main.js"></script>
 </body>
 </html>
