@@ -1,3 +1,7 @@
-import displayTasks from './tasks.js'
+import taskInput from './tasks.js'
+import {menu,taskDom} from './website.js'
 
-displayTasks()
+
+menu()
+taskDom()
+taskInput()

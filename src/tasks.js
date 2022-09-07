@@ -1,42 +1,60 @@
-import Todo from './todo.js'
-import taskDom from './website.js';
-
+import {Todo, Project} from './constructors.js'
+import {taskDom} from './website.js';
+taskDom()
+function taskInput() {
 let newTask = new Todo;
 const tasks = [
   {
     title: 'Clean House',
     details: 'clean before guests come',
-    dueDate: '9/1/2022',
     priority: 'medium',
   },
   {
     title: 'Finish Homework',
     details: 'finish algebra',
-    dueDate: 'next Thursday',
     priority: 'medium',
   }
 ];
-tasks.push(newTask);
+let newProject = new Project;
+
+ const projectArray = [
+  {
+    title: 'Clean House',
+    task: 'Clean House',
+    dueDate: '2022, 9, 9',
+    priority: 'high'
+  }
+ ]
+
 const main = document.getElementById('toDoList');
-let list = document.createElement('ul');
+const list = document.getElementsByClassName('taskItemList')
+const taskDiv = document.getElementsByClassName('taskContainer')
+const taskRight = document.getElementsByClassName('taskRight')
+const taskTitle = document.getElementsByClassName('taskTitle');
+const taskDetails = document.getElementsByClassName('taskDetails');
+const taskDate = document.getElementsByClassName('taskDate');
+const taskDelete = document.getElementsByTagName('span');
+main.append(list);
+taskDiv.appendChild(taskTitle, taskDetails, taskRight);
+taskRight.appendChild(taskDate, taskDelete);
+let item = document.createElement('li');
+list.append(item);
+item.append(taskDiv)
 
 
 
 function displayTasks() {
-  taskDom()
 
-  const taskTitle = document.getElementById('title');
-  const taskDetails = document.getElementById('details');
-  const taskDate = document.getElementById('date');
-  const taskDelete = document.getElementsByTagName('span');
-  for (let i=0; i<tasks.length; i++) {
-
-    let item = document.createElement('li');
-    taskTitle.innerHTML = newTask.title;
-    taskDetails.innerHTML = newTask.details;
-    taskDate.innerHTML = newTask.dueDate;
-    taskDelete.innerHTML = 'X'
-  }
+tasks.forEach(function(newTask){
+  tasks.push(newTask);
+  taskTitle.innerHTML = newTask.title;
+  taskDetails.innerHTML = newTask.details;
+  taskDate.innerHTML = newTask.dueDate;
+  taskDelete.innerHTML = '&times;'
+  return newTask.title, newTask.details, newTask.dueDate
+    })
   };
-console.log(tasks)
-export default displayTasks;
+
+  console.log(tasks)
+};
+export default taskInput;
