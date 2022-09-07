@@ -6,33 +6,54 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="shortcut icon" href="./icons/list-ol-solid.svg" type="image/x-icon">
   <script src="https://kit.fontawesome.com/70fab30855.js" crossorigin="anonymous"></script>
 </head>
 <body>
-      <div class="grid-container">
-        <div id="left-sidebar" class="sidebar">
-            <button id="hide"><i class="fa-sharp fa-solid fa-bars"></i></button>
-          <div id="task-form" class="form-display">
-            <div class="task-heading">Create Task</div>
-                <form action="" method="">
-                  <label for="form-heading">Task:</label>
-                  <input type="text" name="form-heading" id="form-heading">
-                  <label for="form-description">Description:</label>
-                  <input type="text" name="form-description" id="form-description">
-                  <label for="form-date">Due Date:</label>
-                  <input type="date" name="form-date" id="form-date">
-                  <label for="form-priority">Priority:</label>
-                  <select name="form-priority" id="form-priority">
-                    <option value="high">High</option>
-                    <option value="medium">Medium</option>
-                    <option value="low">Low</option>
-                  </select>
-                  <button id="submit-task" type="submit">Add Task</button>
-                </form>
+    <div class="grid-container">
+      <div id="left-sidebar" class="sidebar">
+        <button id="disappear-sidebar" class="disappear"><i class="fa-sharp fa-solid fa-bars"></i></button>
+          <div id="project-form" class="form-display">
+            <div class="project-heading">Create Project</div>
+              <form>
+                <label for="project-heading">Project:</label>
+                <input type="text" name="project-heading" id="project-heading">
+                <label for="project-description">Description:</label>
+                <input type="text" name="project-description" id="project-description">
+                <label for="project-date">Due Date:</label>
+                <input type="date" name="project-date" id="project-date">
+                <label for="project-priority">Priority:</label>
+                <select name="project-priority" id="project-priority">
+                  <option value="high">High</option>
+                  <option value="medium">Medium</option>
+                  <option value="low">Low</option>
+                </select>
+                <button id="submit-project" type="submit">Create Project</button>
+              </form>
           </div>
-        </div>
+      </div>
         <div id="toDoList" class="main-content">
-          <h1>Example</h1>
+            <h1>Example</h1>
+            <button id="modalBtn"><i class="fa-sharp fa-solid fa-circle-plus"></i></button>
+            <div id="taskModal" class="modal">
+                <div id="task-form" class="task-form">
+                  <span class="close">&times;</span>
+                  <div class="task-heading">Create Task</div>
+                      <form>
+                        <label for="form-heading">Task:</label>
+                        <input type="text" name="form-heading" id="form-heading">
+                        <label for="form-description">Description:</label>
+                        <input type="text" name="form-description" id="form-description">
+                        <label for="form-priority">Priority:</label>
+                        <select name="form-priority" id="form-priority">
+                          <option value="high">High</option>
+                          <option value="medium">Medium</option>
+                          <option value="low">Low</option>
+                        </select>
+                        <button id="submit-task" type="submit">Add Task</button>
+                      </form>
+                </div>
+            </div>
         </div>
       </div>
   <script src="main.js"></script>
