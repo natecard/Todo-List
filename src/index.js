@@ -1,7 +1,9 @@
 import taskInput from './tasks.js'
-import {menu,taskDom} from './website.js'
+import {menu,todoDom} from './website.js'
+import _ from 'lodash';
+import './style.css';
 
 
-menu()
-taskDom()
-taskInput()
+// menu()
+// todoDom()
+// taskInput()

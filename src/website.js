@@ -19,7 +19,7 @@ document.querySelector('button').onclick = function () {
   }
 }
 
-function taskDom() {
+function todoDom() {
   const main = document.getElementById('toDoList');
   // main.setAttribute('id','todoList')
   const list = document.createElement('ul').classList.add('taskList');
@@ -36,6 +36,11 @@ function taskDom() {
   // taskDelete.setAttribute('id', 'taskDelete')
   const taskRight = document.createElement('div').classList.add('rightSide');
   // taskRight.setAttribute('id', 'taskRight')
+  const submit = document.getElementById('submit-project');
+  // submit.addEventListener('click', function(e){
+  //   console.log('nope')
+  //   e.target.preventDefault();
+  // })
   let modal = document.getElementById('taskModal')
   let taskButton = document.getElementById('modalBtn')
   let taskClose = document.getElementsByClassName('close')[0]
@@ -51,4 +56,4 @@ function taskDom() {
     }
   }
 };
-export {taskDom, menu};
+export {todoDom, menu};

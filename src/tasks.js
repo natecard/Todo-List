@@ -1,21 +1,23 @@
 import {Todo, Project} from './constructors.js'
-import {taskDom} from './website.js';
-taskDom()
+import {todoDom, menu} from './website.js';
+todoDom()
+menu()
 function taskInput() {
 let newTask = new Todo;
+let newProject = new Project;
+newTask.pushToProjects(projectArray)
 const tasks = [
   {
     title: 'Clean House',
     details: 'clean before guests come',
-    priority: 'medium',
+    priority: 'medium'
   },
   {
     title: 'Finish Homework',
     details: 'finish algebra',
-    priority: 'medium',
+    priority: 'medium'
   }
 ];
-let newProject = new Project;
 
  const projectArray = [
   {
@@ -26,35 +28,32 @@ let newProject = new Project;
   }
  ]
 
-const main = document.getElementById('toDoList');
-const list = document.getElementsByClassName('taskItemList')
-const taskDiv = document.getElementsByClassName('taskContainer')
-const taskRight = document.getElementsByClassName('taskRight')
-const taskTitle = document.getElementsByClassName('taskTitle');
-const taskDetails = document.getElementsByClassName('taskDetails');
-const taskDate = document.getElementsByClassName('taskDate');
-const taskDelete = document.getElementsByTagName('span');
-main.append(list);
-taskDiv.appendChild(taskTitle, taskDetails, taskRight);
-taskRight.appendChild(taskDate, taskDelete);
-let item = document.createElement('li');
-list.append(item);
-item.append(taskDiv)
+ const main = document.getElementById('toDoList');
+ const list = document.querySelector('.taskItemList')
+ const taskDiv = document.querySelector('.taskContainer')
+ const taskRight = document.querySelector('.taskRight')
+ const taskTitle = document.querySelector('.taskTitle');
+ const taskDetails = document.querySelector('.taskDetails');
+ const taskDate = document.querySelector('.taskDate');
+ const taskDelete = document.getElementsByTagName('span');
+ let item = document.createElement('li');
+ main.append(list);
+ list.appendChild(item);
+ item.appendChild(taskDiv)
+ taskDiv.appendChild(taskTitle, taskDetails, taskRight);
+ taskRight.appendChild(taskDate, taskDelete);
 
 
 
-function displayTasks() {
+ function displayTasks() {
 
-tasks.forEach(function(newTask){
-  tasks.push(newTask);
-  taskTitle.innerHTML = newTask.title;
-  taskDetails.innerHTML = newTask.details;
-  taskDate.innerHTML = newTask.dueDate;
-  taskDelete.innerHTML = '&times;'
-  return newTask.title, newTask.details, newTask.dueDate
+   tasks.forEach(function(newTask){
+     taskTitle.innerHTML = newTask.title.valueOf;
+     taskDetails.innerHTML = newTask.details.valueOf;
+     taskDate.innerHTML = newTask.dueDate.valueOf;
+     taskDelete.innerHTML = '&times;'
     })
+    console.log(projectArray)
   };
-
-  console.log(tasks)
 };
-export default taskInput;
+export default {taskInput};
