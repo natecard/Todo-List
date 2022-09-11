@@ -13,6 +13,7 @@
   <div class="grid-container">
       <div id="left-sidebar" class="sidebar">
         <button id="disappear-sidebar" class="disappear"><i class="fa-sharp fa-solid fa-bars"></i></button>
+        <button id="modalBtn"><i class="fa-sharp fa-solid fa-circle-plus"></i></button>
           <div id="project-form" class="form-display">
             <div class="project-heading">Create Project</div>
               <form class="form">
@@ -26,32 +27,31 @@
                   <option value="medium">Medium</option>
                   <option value="low">Low</option>
                 </select>
-                <button id="project-submit" class="submit" type="submit">Create Project</button>
+                <button id="project-submit" class="submit" type="button">Create Project</button>
               </form>
           </div>
       </div>
         <div id="toDoList" class="main-content">
-            <h1 id="greeting"></h1>
-            <button id="modalBtn"><i class="fa-sharp fa-solid fa-circle-plus"></i></button>
-            <div id="taskModal" class="modal">
-                <div id="task-form" class="form-display">
-                  <span class="close">&times;</span>
-                  <div class="task-heading">Create Task</div>
-                      <form class="form">
-                        <label for="form-heading">Task:</label>
-                        <input type="text" name="form-heading" id="form-heading">
-                        <label for="form-description">Description:</label>
-                        <input type="text" name="form-description" id="form-description">
-                        <label for="form-priority">Priority:</label>
-                        <select name="form-priority" id="form-priority">
-                          <option value="high">High</option>
-                          <option value="medium">Medium</option>
-                          <option value="low">Low</option>
-                        </select>
-                        <button id="task-submit" class="submit" type="submit">Add Task</button>
-                      </form>
-                </div>
+          <div id="taskModal" class="modal">
+            <div id="task-form" class="form-display">
+              <span class="close">&times;</span>
+              <div class="task-heading">Create Task</div>
+              <form class="form">
+                <label for="task-title">Task:</label>
+                <input type="text" name="task-title" id="task-title">
+                <label for="task-details">Description:</label>
+                <input type="text" name="task-details" id="task-details">
+                <label for="task-priority">Priority:</label>
+                <select name="task-priority" id="task-priority">
+                  <option value="high">High</option>
+                  <option value="medium">Medium</option>
+                  <option value="low">Low</option>
+                </select>
+                <button id="task-submit" class="submit" type="button">Add Task</button>
+              </form>
             </div>
+          </div>
+          <h1 id="greeting">Hello and Welcome</h1>
         </div>
       </div>
       <footer class="footer">Example</footer>
