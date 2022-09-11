@@ -1,28 +1,22 @@
 import {lightFormat} from 'date-fns'
 
-let projectArray = [];
+// window.localStorage.setItem('array', 'arrays');
+// console.log(window.localStorage.getItem('array'))
+
+
 let tasks = [];
 
-function Todo (title, details, priority){
+function Todo (title, details, priority, dueDate){
   this.title = title;
   this.details = details;
   this.priority = priority;
-  this.pushToTasks = function() {
-    tasks.push(this)
-  }
- };
-
-function Project (title,dueDate){
-  this.title = title;
   this.dueDate = function formatDate(date){
     date = lightFormat(new Date(2022, 9, 5), "yyyy, M, d");
-    date = dueDate
     console.log(dueDate);
-}
-  this.pushToProjects = function() {
-    projectArray.push(this)
-    console.log('pushed')
-  }
-}
+ }
+  this.info = function pushToTasks(){
+  tasks.push(new Todo);
+ }
+};
 
-export {Todo, Project};
+export {Todo};

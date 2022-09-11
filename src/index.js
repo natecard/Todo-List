@@ -1,9 +1,13 @@
 import taskInput from './tasks.js'
-import {menu,todoDom} from './website.js'
-import _ from 'lodash';
+import {hideSideBar,todoDom} from './website.js'
+import lodash from 'lodash';
 import './style.css';
 
+// if (!localStorage.getItem('tasks', 'projectArray')) {
 
-// menu()
-// todoDom()
-// taskInput()
+// } else {
+//   console.log('no storage')
+// }
+taskInput()
+hideSideBar()
+todoDom()

@@ -1,5 +1,4 @@
-
-function menu() {
+function hideSideBar() {
 const sidebar = document.querySelector('.sidebar')
 const mainContent = document.querySelector('.main-content')
 const projectForm = document.getElementById('project-form')
@@ -36,7 +35,7 @@ function todoDom() {
   // taskDelete.setAttribute('id', 'taskDelete')
   const taskRight = document.createElement('div').classList.add('rightSide');
   // taskRight.setAttribute('id', 'taskRight')
-  const submit = document.getElementById('submit-project');
+  const submit = document.getElementById('project-submit');
   // submit.addEventListener('click', function(e){
   //   console.log('nope')
   //   e.target.preventDefault();
@@ -56,4 +55,4 @@ function todoDom() {
     }
   }
 };
-export {todoDom, menu};
+export {todoDom, hideSideBar};
