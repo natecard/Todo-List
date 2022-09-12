@@ -1,6 +1,6 @@
 import taskInput from './tasks.js'
 import {hideSideBar,todoDom} from './website.js'
-import lodash from 'lodash';
+import _ from 'lodash';
 import './style.css';
 
 // if (!localStorage.getItem('tasks', 'projectArray')) {

@@ -5,6 +5,7 @@ import {lightFormat} from 'date-fns'
 
 
 let tasks = [];
+let newTask = new Todo;
 
 function Todo (title, details, priority, dueDate){
   this.title = title;
@@ -15,7 +16,7 @@ function Todo (title, details, priority, dueDate){
     console.log(dueDate);
  }
   this.info = function pushToTasks(){
-  tasks.push(new Todo);
+  tasks.push(newTask);
  }
 };
 
