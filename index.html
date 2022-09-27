@@ -10,51 +10,54 @@
 </head>
 <body>
   <header class="header">Welcome</header>
-  <div class="grid-container">
-      <div id="left-sidebar" class="sidebar">
-        <button id="disappear-sidebar" class="disappear"><i class="fa-sharp fa-solid fa-bars"></i></button>
+  <div class="gridContainer">
+      <div id="leftSidebar" class="sidebar">
+        <button id="disappearSidebar" class="disappear"><i class="fa-sharp fa-solid fa-bars"></i></button>
         <button id="modalBtn"><i class="fa-sharp fa-solid fa-circle-plus"></i></button>
-          <div id="project-form" class="form-display">
-            <div class="project-heading">Create Project</div>
-              <form class="form">
-                <label for="project-name">Project:</label>
-                <input type="text" class="project-name" name="project-name" id="project-name">
-                <label for="project-date">Due Date:</label>
-                <input type="date" class="project-date" name="project-date" id="project-date">
-                <label for="project-priority">Priority:</label>
-                <select name="project-priority" class="project-priority" id="project-priority">
-                  <option value="high">High</option>
-                  <option value="medium">Medium</option>
-                  <option value="low">Low</option>
-                </select>
-                <button id="project-submit" class="submit" type="button">Create Project</button>
-              </form>
-          </div>
+          <div id="dateDiv"></div>
       </div>
-        <div id="toDoList" class="main-content">
-          <div id="taskModal" class="modal">
-            <div id="task-form" class="form-display">
+      <div class="mainContent">
+      <h1 id="greeting">Hello and Welcome</h1>
+      <div id="toDoList" class="toDoList">
+        <ul id="taskList" class="list">
+          <li class="taskDivList">
+            <div class="taskContainer">
+              <div class="taskDivLeft">
+                <p class="taskTitle">Example Task</p>
+                <p class="taskDetails">Example Details </p>
+              </div>
+              <div class="taskDivRight">
+                <span class="taskDelete">&times</span>
+                <div class="taskDueDate">Example Date</div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+        <div id="taskModal" class="modal">
+            <div id="taskForm" class="formDisplay">
               <span class="close">&times;</span>
-              <div class="task-heading">Create Task</div>
+              <div class="taskHeading">Create Task</div>
               <form class="form">
-                <label for="task-title">Task:</label>
-                <input type="text" name="task-title" id="task-title">
-                <label for="task-details">Description:</label>
-                <input type="text" name="task-details" id="task-details">
-                <label for="task-priority">Priority:</label>
-                <select name="task-priority" id="task-priority">
+                <label for="taskTitle">Task:</label>
+                <input data-task="task-title" type="text" name="taskTitle" id="taskFormTitle">
+                <label for="taskDetails">Description:</label>
+                <input data-task="task-details" type="text" name="taskDetails" id="taskFormDetails">
+                <label for="dueDate">Date:</label>
+                <input data-task="due-date" type="date" name="dueDate" id="formDueDate">
+                <label for="taskPriority">Priority:</label>
+                <select data-task="task-priority" name="taskPriority" id="taskFormPriority">
                   <option value="high">High</option>
                   <option value="medium">Medium</option>
                   <option value="low">Low</option>
                 </select>
-                <button id="task-submit" class="submit" type="button">Add Task</button>
+                <button id="addTask" class="addTask">Add Task</button>
               </form>
             </div>
-          </div>
-          <h1 id="greeting">Hello and Welcome</h1>
         </div>
       </div>
-      <footer class="footer">Example</footer>
+  </div>
+  <footer class="footer">Example</footer>
       <script src="main.js"></script>
-    </body>
+</body>
 </html>
