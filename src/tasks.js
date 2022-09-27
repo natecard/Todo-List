@@ -2,45 +2,54 @@ import {Todo} from './constructors.js'
 import {todoDom, hideSideBar} from './website.js';
 todoDom()
 hideSideBar()
-let tasks = []
-let newTask = new Todo;
-function taskInput() {
+let newTask = new Todo
+let tasks = [
+  {
+  id: 1,
+  title: 'Clean',
+  details: 'Finish cleaning the house',
+  dueDate: "2022, 9, 19"
+},
+{
+  id: 2,
+  title:'Homework',
+  details:'Complete homework for the day',
+  dueDate:"2022,9,22"
+}
+]
+function taskRender() {
+  tasks.forEach((task, index) => {
+    let list = document.getElementById('taskList')
+    let taskContainer = document.createElement('div');
+    taskContainer.classList.add('taskContainer');
+    let item = document.createElement('li');
+    item.classList.add('taskDivList')
+    let taskDivLeft = document.createElement('div');
+    taskDivLeft.classList.add('taskDivLeft');
+    let taskTitle = document.createElement('p');
+    taskTitle.classList.add('taskTitle');
+    let taskTitleText = document.createTextNode(`${task.title}`)
+    let taskDetails = document.createElement('p')
+    taskDetails.classList.add('taskDetails');
+    let taskDetailsText = document.createTextNode(`${task.details}`)
+    let taskDivRight = document.createElement('div');
+    taskDivRight.classList.add('taskDivRight');
+    let taskDueDate = document.createElement('div');
+    taskDueDate.classList.add('taskDueDate');
+    let taskDueDateText = document.createTextNode(`${task.dueDate}`)
+    let taskDivDelete = document.createElement('span');
+    taskDivDelete.classList.add('taskDelete')
+    taskDivDelete.innerHTML = '&times;';
+    console.log(taskTitleText.nodeValue)
+    taskTitle.appendChild(taskTitleText)
+    taskDetails.appendChild(taskDetailsText)
+    taskDueDate.appendChild(taskDueDateText)
+    taskDivRight.append(taskDivDelete, taskDueDate);
+    taskDivLeft.append(taskTitle, taskDetails);
+    taskContainer.append(taskDivLeft, taskDivRight)
+    item.append(taskContainer);
+    list.appendChild(item)
 
-  const main = document.getElementById('toDoList');
-  const list = document.querySelector('.taskItemList');
-  const taskDiv = document.querySelector('.taskContainer');
-  const taskDivRight = document.querySelector('.taskRight');
-  const taskDivTitle = document.querySelector('.taskTitle');
-  const taskDivDetails = document.querySelector('.taskDetails');
-  const taskDivDate = document.querySelector('.taskDate');
-  const taskDivDelete = document.getElementsByTagName('span');
-  let item = document.createElement('li');
-  main.append(list);
-  list.appendChild(item);
-  item.appendChild(taskDiv);
-  taskDiv.appendChild(taskDivTitle, taskDivDetails, taskDivRight);
-  taskRight.appendChild(taskDivDate, taskDivDelete);
-
-  document.getElementById('task-submit').addEventListener('click', function() {
-    const taskTitle = document.getElementById('task-title').value;
-    alert(taskTitle)
-    taskTitle = taskDivTitle.innerHTML;
-    const taskDetails = document.getElementById('task-details').value;
-    taskDetails = taskDivDetails.innerHTML;
-    const taskPriority = document.getElementById('task-priority').value;
-    taskPriority = taskDivPriority
-    taskDelete.innerHTML = '&times;'
-
-  // (function displayTasks() {
-    // tasks.forEach()
-  //   for (let i = 0; i < tasks.length; i++) {
-  //       taskDivTitle.valueOf = taskTitle.innerHTML;
-  //       taskDivDetails.valueOf = taskDetails.innerHTML;
-  //       taskDivPriority.valueOf = taskPriority.innerHTML
-  //       taskDelete.innerHTML = '&times;'
-  //     }
-  //     console.log(tasks)
-  //   })();
-    })
-};
-export default {taskInput};
+  })
+}
+export {taskRender, tasks};

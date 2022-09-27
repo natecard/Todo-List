@@ -7,6 +7,7 @@
   --modal-color:rgba(179, 199, 223, .8);
   --lightest-blue-blur:rgba(179, 199, 223, .6);
   color: var(--font-color);
+  font-family: Arial, Helvetica, sans-serif;
 }
 html, body{
   height: fit-content;
@@ -14,7 +15,7 @@ html, body{
 }
 body {
   margin: auto;
-    background: url('./images/background.webp') no-repeat right 33% bottom 65%/135%;
+  background: url('./images/background.webp') no-repeat right 33% bottom 65%/100%;
   -webkit-backdrop-filter: blur(3px) grayscale(60%);
   backdrop-filter: blur(3px) grayscale(60%);
   overflow: visible;
@@ -22,7 +23,7 @@ body {
 .greeting{
   color: aliceblue;
 }
-.main-content h1 {
+.mainContent h1 {
   margin: 1em;
 }
 ul {
@@ -42,25 +43,37 @@ ul {
   color: var(--font-color);
 }
 li {
-  border: 1px solid black;
   margin: 1em;
-  box-sizing: content-box;
+  list-style: none;
 }
 div.taskContainer{
   display: flex;
-  justify-items: flex-end;
+  flex-direction: row;
+  justify-content:space-between;
+  border: 2px solid var(--lightest-blue-blur);
+  background-color: var(--lightest-blue-blur);
+  border-radius: 10px;
+  margin: 1rem;
 }
-div.rightSide{
+div.taskDivLeft{
   display: flex;
-  flex: 1 1 0;
-  justify-content: flex-end;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: flex-end;
+  margin: 3px;
 }
-.task-heading, .project-heading {
+div.taskDivRight{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin: 3px;
+}
+.taskHeading{
   text-align: center;
   margin-top: 1em;
   font-size: 1.5em;
 }
-
 .form {
   display: flex;
   flex-direction: column;
@@ -72,7 +85,7 @@ input, select{
   border: none;
   opacity: 0.7;
 }
-#project-submit, #task-submit {
+#taskSubmit {
   margin: 2em;
   border: thin solid black;
   background-color: var(--main-bg-color);
@@ -82,7 +95,7 @@ input, select{
 label{
   padding: 5px;
 }
-.grid-container {
+.gridContainer {
   width: 100vw;
   margin: 0 auto;
   height: 100vh;
@@ -100,7 +113,7 @@ label{
   transition: 1s ease;
   position: relative;
 }
-.main-content {
+.mainContent {
   width: auto;
   height: 100%;
   transition: 1s ease;
@@ -112,7 +125,7 @@ label{
   width: 2rem;
   background-color: var(--dark-blue);
 }
-button#disappear-sidebar, button#modalBtn {
+button#disappearSidebar, button#modalBtn {
   position: absolute;
   border: none;
   height: 40px;
@@ -128,7 +141,7 @@ button#disappear-sidebar, button#modalBtn {
 button#modalBtn {
   top: 5rem;
 }
-.form-display {
+.formDisplay {
   animation: fadeIn 2s;
   -webkit-animation: fadeIn 2s;
   -moz-animation: fadeIn 2s;
@@ -172,7 +185,7 @@ button#modalBtn {
   background-color: rgba(0,0,0,0.5);
 }
 
-#task-form {
+#taskForm {
   background-color: var(--modal-color);
   margin: 15% auto;
   padding: 20px;
@@ -180,7 +193,8 @@ button#modalBtn {
   border-radius: 25px;
 }
 
-.close {
+.close,
+.taskDelete {
   color: var(--dark-blue);
   float: right;
   font-size: 28px;
@@ -188,7 +202,8 @@ button#modalBtn {
 }
 
 .close:hover,
-.close:focus {
+.close:focus,
+.taskDelete {
   color: black;
   text-decoration: none;
   cursor: pointer;

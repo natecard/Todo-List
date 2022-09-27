@@ -1,37 +1,24 @@
 function hideSideBar() {
 const sidebar = document.querySelector('.sidebar')
-const mainContent = document.querySelector('.main-content')
-const projectForm = document.getElementById('project-form')
+const mainContent = document.querySelector('.mainContent')
+const dateDiv = document.getElementById('dateDiv')
 
 document.querySelector('button').onclick = function () {
   sidebar.classList.toggle('sidebar_small');
   mainContent.classList.toggle('main-content_large');
-  if (projectForm.style.display ==='none') {
-    projectForm.style.display ='block'
-    projectForm.classList.add('form-display')
-    projectForm.classList.remove('form-hide')
+  if (dateDiv.style.display ==='none') {
+    dateDiv.style.display ='block'
+    dateDiv.classList.add('formDisplay')
+    dateDiv.classList.remove('formHide')
   } else {
-    projectForm.style.display = 'none'
-    projectForm.classList.add('form-hide')
-    projectForm.classList.remove('form-display')
+    dateDiv.style.display = 'none'
+    dateDiv.classList.add('formHide')
+    dateDiv.classList.remove('formDisplay')
   }
   }
-}
+};
 
 function todoDom() {
-  const main = document.getElementById('toDoList');
-  const list = document.createElement('ul').classList.add('taskList');
-  const taskDiv = document.createElement('div').classList.add('taskContainer');
-  const taskTitle = document.createElement('div').classList.add('title');
-  const taskDetails = document.createElement('div').classList.add('details');
-  const taskDate = document.createElement('div').classList.add('date');
-  const taskDelete = document.createElement('span').classList.add('delete');
-  const taskRight = document.createElement('div').classList.add('rightSide');
-  // const submit = document.getElementById('project-submit');
-  // submit.addEventListener('click', function(e){
-  //   console.log('nope')
-  //   e.target.preventDefault();
-  // })
   let modal = document.getElementById('taskModal')
   let taskButton = document.getElementById('modalBtn')
   let taskClose = document.getElementsByClassName('close')[0]
