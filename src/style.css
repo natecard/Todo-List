@@ -14,17 +14,18 @@ html, body{
   width: fit-content;
 }
 body {
-  margin: auto;
   background: url('./images/background.webp') no-repeat right 33% bottom 65%/100%;
   -webkit-backdrop-filter: blur(3px) grayscale(60%);
   backdrop-filter: blur(3px) grayscale(60%);
   overflow: visible;
 }
-.greeting{
-  color: aliceblue;
+#projectDiv h1{
+  margin: 0;
 }
-.mainContent h1 {
-  margin: 1em;
+
+.mainContent {
+  padding: 1em 0em 1em 2em;
+  height: fit-content;
 }
 ul {
   list-style: none;
@@ -42,9 +43,15 @@ ul {
   background-color: var(--dark-blue);
   color: var(--font-color);
 }
-li {
+.mainContent li {
   margin: 1em;
   list-style: none;
+}
+#projectList li{
+  margin: 1em;
+}
+#taskList {
+  display: flex;
 }
 div.taskContainer{
   display: flex;
@@ -114,6 +121,8 @@ label{
   position: relative;
 }
 .mainContent {
+  /* display: flex;
+  flex-wrap: wrap; */
   width: auto;
   height: 100%;
   transition: 1s ease;
@@ -207,4 +216,11 @@ button#modalBtn {
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+input:checked+label{
+  text-decoration: line-through;
+}
+button{
+  border: none;
+  background: none;
 }
