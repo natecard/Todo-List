@@ -4,57 +4,76 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>To-Do List</title>
   <link rel="shortcut icon" href="./icons/list-ol-solid.svg" type="image/x-icon">
   <script src="https://kit.fontawesome.com/70fab30855.js" crossorigin="anonymous"></script>
 </head>
 <body>
-  <header class="header">Welcome</header>
-  <div class="grid-container">
-      <div id="left-sidebar" class="sidebar">
-        <button id="disappear-sidebar" class="disappear"><i class="fa-sharp fa-solid fa-bars"></i></button>
+  <header class="header">To-Do List</header>
+  <div class="wrapper">
+      <div id="leftSidebar" class="sidebar">
+        <button id="disappearSidebar" class="disappear"><i class="fa-sharp fa-solid fa-bars"></i></button>
         <button id="modalBtn"><i class="fa-sharp fa-solid fa-circle-plus"></i></button>
-          <div id="project-form" class="form-display">
-            <div class="project-heading">Create Project</div>
-              <form class="form">
-                <label for="project-name">Project:</label>
-                <input type="text" class="project-name" name="project-name" id="project-name">
-                <label for="project-date">Due Date:</label>
-                <input type="date" class="project-date" name="project-date" id="project-date">
-                <label for="project-priority">Priority:</label>
-                <select name="project-priority" class="project-priority" id="project-priority">
-                  <option value="high">High</option>
-                  <option value="medium">Medium</option>
-                  <option value="low">Low</option>
-                </select>
-                <button id="project-submit" class="submit" type="button">Create Project</button>
-              </form>
-          </div>
-      </div>
-        <div id="toDoList" class="main-content">
-          <div id="taskModal" class="modal">
-            <div id="task-form" class="form-display">
-              <span class="close">&times;</span>
-              <div class="task-heading">Create Task</div>
-              <form class="form">
-                <label for="task-title">Task:</label>
-                <input type="text" name="task-title" id="task-title">
-                <label for="task-details">Description:</label>
-                <input type="text" name="task-details" id="task-details">
-                <label for="task-priority">Priority:</label>
-                <select name="task-priority" id="task-priority">
-                  <option value="high">High</option>
-                  <option value="medium">Medium</option>
-                  <option value="low">Low</option>
-                </select>
-                <button id="task-submit" class="submit" type="button">Add Task</button>
-              </form>
+        <button id="taskClear"><i class="fa-solid fa-x"></i></button>
+          <div id="projectDiv">
+            <h1>Projects</h1>
+            <div id="projectBtns">
+              <button class="btnCreate">＋</button>
+              <button id="projectClear">ｘ</button>
             </div>
+            <form action="" data-new-project-form>
+              <input type="text" size="16"
+              class="newProject"
+              data-new-project-input
+              placeholder="New Project">
+            </form>
+            <ul id="projectList" data-projects>
+            </ul>
           </div>
-          <h1 id="greeting">Hello and Welcome</h1>
-        </div>
       </div>
-      <footer class="footer">Example</footer>
-      <script src="main.js"></script>
-    </body>
+        <div class="mainContent">
+          <!-- <h1>Tasks for</h1> -->
+          <h1 id="projectTitle"></h1>
+          <div id="taskModal" class="modal">
+              <div id="taskForm" class="formDisplay">
+                <span class="close">&times;</span>
+                <form class="form" id="form" data-new-task-form>
+                  <label for="taskTitle">Task:</label>
+                  <input type="text" placeholder="Add Task" name="taskTitle" id="newTaskAdd" data-new-task-input>
+                  <label for="dueDate">Date:</label>
+                  <input type="date" name="dueDate" id="newTaskDate" data-new-task-date>
+                  <label for="taskPriority">Priority:</label>
+                  <select name="taskPriority" id="taskFormPriority" data-new-task-priority>
+                    <option value="High">High</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Low">Low</option>
+                  </select>
+                  <button id="taskBtnCreate" class="addTask">Add Task</button>
+                </form>
+                </div>
+            </div>
+          <div data-tasks-container></div>
+              <ul id="taskList" class="list" data-tasks>
+              </ul>
+        </div>
+        <footer class="footer">
+        <div>© natecard 2022<a href="http://github.com/natecard"><i class="fa-brands fa-github"></i></a></div>
+        </footer>
+  </div>
+      <template id="task-template">
+        <li class="task">
+          <div class="taskDiv">
+            <input class="checkbox"  type="checkbox"/>
+              <div class="taskDivCheck">
+                <label>
+                <span class="custom-checkbox"></span>
+                </label>
+                <div class="taskDate"></div>
+                <div class="taskPriority"></div>
+              </div>
+          </div>
+        </li>
+      </template>
+  <script src="main.js"></script>
+</body>
 </html>
