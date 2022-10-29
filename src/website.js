@@ -22,6 +22,7 @@ function hideSideBar() {
       element.removeChild(element.firstChild)
     }
   }
+
   function todoDom() {
     let modal = document.getElementById('taskModal');
     let taskButton = document.getElementById('modalBtn');

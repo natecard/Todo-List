@@ -136,5 +136,4 @@ function render() {
     renderTasks(selectedProject)
   }
 }
-
 export {saveAndRender}
