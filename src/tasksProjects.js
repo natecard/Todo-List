@@ -1,7 +1,4 @@
-// const LOCAL_STORAGE_TASK_KEY = 'todo.tasks'
-// const LOCAL_STORAGE_SELECTED_TASK_ID_KEY = 'todo.selectedTaskId'
-// let tasks = JSON.parse(localStorage.getItem(LOCAL_STORAGE_TASK_KEY)) || []
-// let selectedTaskId = localStorage.getItem(LOCAL_STORAGE_SELECTED_TASK_ID_KEY)
+import { clearElement } from "./website.js"
 
 const LOCAL_STORAGE_LIST_KEY = 'task.projects'
 const LOCAL_STORAGE_SELECTED_LIST_ID_KEY = 'task.selectedProjectId'
@@ -10,13 +7,15 @@ let selectedProjectId = localStorage.getItem(LOCAL_STORAGE_SELECTED_LIST_ID_KEY)
 
 const submitBtn = document.getElementById('taskBtnCreate')
 const newTaskInput = document.getElementById('newTaskAdd')
+const newTaskDate = document.querySelector('[data-new-task-date]')
+const newTaskPriority = document.querySelector('[data-new-task-priority]')
 const newTaskForm = document.querySelector('[data-new-task-form]');
 const taskList = document.getElementById('taskList');
 const taskTemplate = document.getElementById('task-template')
 const projectList = document.querySelector('[data-projects]')
 const newListForm = document.querySelector('[data-new-project-form]')
 const newListInput = document.querySelector('[data-new-project-input]')
-const projectTitle = document.getElementById('projectTitle')
+const taskHeader = document.getElementById('projectTitle')
 const tasksContainer = document.querySelector('[data-tasks]')
 const deleteTaskBtn = document.getElementById('taskClear')
 const deleteProjectBtn = document.getElementById('projectClear')
@@ -36,8 +35,8 @@ projectList.addEventListener('click', e=> {
 function createProject(title) {
   return {title: title, id: Date.now()*Math.random(), tasks: [] }
 }
-function createTask(name) {
-  return { name: name, id: Date.now()*Math.random(), dueDate: dueDate, complete: false}
+function createTask(name, dueDate, priority) {
+  return { name: name, id: Date.now()*Math.random(), dueDate: dueDate, priority: priority,complete: false}
 }
 
 function saveAndRender() {
@@ -52,7 +51,11 @@ function renderTasks(selectedProject) {
     checkbox.id = task.id
     checkbox.checked = task.complete
     const label = taskElement.querySelector('label')
+    const dueDate = taskElement.querySelectorAll('div')[2]
+    const priority = taskElement.querySelectorAll('div')[3]
     label.htmlFor = task.id
+    dueDate.append(`Due: ${task.dueDate}`)
+    priority.append(`Priority: ${task.priority}`)
     label.append(task.name)
     taskList.appendChild(taskElement)
   });
@@ -105,78 +108,33 @@ function renderProjects(){
 submitBtn.addEventListener('click', function(e) {
   e.preventDefault()
   let title = newTaskInput.value;
-  // let dueDate = newTaskDate
+  let dueDate = newTaskDate.value;
+  let priority = newTaskPriority.value;
   if (title == '' || title == null) return
-  let task = createTask(title, dueDate)
+  let task = createTask(title, dueDate, priority)
   newTaskInput.value = null
   const selectedProject = projects.find(project => project.id == selectedProjectId)
   selectedProject.tasks.push(task)
   clearElement(taskList)
   renderTasks(selectedProject)
+  todoDom()
+  saveAndRender()
 });
 
-// document.addEventListener('DOMContentLoaded', () => {
-//   submitBtn.addEventListener('click', () => {
-//     document.querySelector('form').reset;
-//   });
-// })
 function render() {
   clearElement(projectList)
   renderProjects()
+  taskHeader.innerText = 'Tasks for...'
 
   const selectedProject = projects.find(project => project.id == selectedProjectId);
   if (selectedProjectId == null) {
     taskList.style.display = 'none'
   } else {
     taskList.style.display = ''
-    projectTitle.innerText = `Tasks for ${selectedProject.title}`
+    taskHeader.innerText = `Tasks for ${selectedProject.title}`
     clearElement(taskList)
     renderTasks(selectedProject)
   }
 }
 
-
-//DOM STUFF//
-
-function hideSideBar() {
-const sidebar = document.querySelector('.sidebar')
-const mainContent = document.querySelector('.mainContent')
-const dateDiv = document.getElementById('projectDiv')
-
-document.querySelector('button').onclick = function () {
-  sidebar.classList.toggle('sidebar_small');
-  mainContent.classList.toggle('main-content_large');
-  if (dateDiv.style.display ==='none') {
-    dateDiv.style.display ='block'
-    dateDiv.classList.add('formDisplay')
-    dateDiv.classList.remove('formHide')
-  } else {
-    dateDiv.style.display = 'none'
-    dateDiv.classList.add('formHide')
-    dateDiv.classList.remove('formDisplay')
-  }
-  }
-};
-function clearElement(element) {
-  while (element.firstChild) {
-    element.removeChild(element.firstChild)
-  }
-}
-// function todoDom() {
-//   let modal = document.getElementById('taskModal');
-//   let taskButton = document.getElementById('modalBtn');
-//   let taskClose = document.getElementsByClassName('close')[0];
-//   taskButton.onclick = function() {
-//     modal.style.display = 'block'
-//     document.getElementById('formDueDate').valueAsDate = new Date();
-//   };
-//   taskClose.onclick = function() {
-//     modal.style.display = 'none'
-//   };
-//   window.onclick = function(event) {
-//     if (event.target == modal) {
-//       modal.style.display = 'none'
-//     }
-//   }
-// };
-export {hideSideBar, saveAndRender}
+export {saveAndRender}

@@ -12,20 +12,30 @@
 html, body{
   height: fit-content;
   width: fit-content;
+  padding: 0;
+  margin: 0;
 }
 body {
   background: url('./images/background.webp') no-repeat right 33% bottom 65%/100%;
   -webkit-backdrop-filter: blur(3px) grayscale(60%);
   backdrop-filter: blur(3px) grayscale(60%);
   overflow: visible;
+  margin: 0;
 }
 #projectDiv h1{
   margin: 0;
 }
 
 .mainContent {
-  padding: 1em 0em 1em 2em;
-  height: fit-content;
+  padding: 0 0 0 25px;
+    /* display: flex;
+  flex-wrap: wrap; */
+  width: auto;
+  height: 100%-25px;
+  transition: 1s ease;
+}
+.main-content_large {
+  width: 100%;
 }
 ul {
   list-style: none;
@@ -44,42 +54,24 @@ ul {
   color: var(--font-color);
 }
 .mainContent li {
-  margin: 1em;
+  margin: 7px;
   list-style: none;
 }
+#taskHeader{
+  margin: 1.05em 0em 0em 0em;
+  color: var(--dark-blue);
+}
 #projectList li{
-  margin: 1em;
+  margin: 1em 0em 1em 0em;
+  text-align: center;
+}
+#projectTitle{
+  margin: 25px 16px 0 16px;
+  color: var(--dark-blue);
 }
 #taskList {
   display: flex;
-}
-div.taskContainer{
-  display: flex;
-  flex-direction: row;
-  justify-content:space-between;
-  border: 2px solid var(--lightest-blue-blur);
-  background-color: var(--lightest-blue-blur);
-  border-radius: 10px;
-  margin: 1rem;
-}
-div.taskDivLeft{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-content: flex-end;
-  margin: 3px;
-}
-div.taskDivRight{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin: 3px;
-}
-.taskHeading{
-  text-align: center;
-  margin-top: 1em;
-  font-size: 1.5em;
+  flex-wrap: wrap;
 }
 .form {
   display: flex;
@@ -98,11 +90,14 @@ input, select{
   background-color: var(--main-bg-color);
   border-radius: 10%;
 }
-
+input{
+  padding: 5px;
+  text-align: center;
+}
 label{
   padding: 5px;
 }
-.gridContainer {
+.wrapper {
   width: 100vw;
   margin: 0 auto;
   height: 100vh;
@@ -111,30 +106,22 @@ label{
   transition: 1s ease;
 }
 .sidebar {
+  display: flex;
   align-content: center;
+  justify-content: center;
   backdrop-filter: blur(5px);
   width: 15rem;
-  height: 100%;
-  padding: 2rem 0rem 0rem 1rem;
+  padding: 25px 16px 0 16px;
   background: linear-gradient(135deg, var(--dark-blue-blur) 40%, var(--dark-blue) 70%);
   transition: 1s ease;
   position: relative;
 }
-.mainContent {
-  /* display: flex;
-  flex-wrap: wrap; */
-  width: auto;
-  height: 100%;
-  transition: 1s ease;
-}
-.main-content_large {
-  width: 100%;
-}
+
 .sidebar_small {
   width: 2rem;
   background-color: var(--dark-blue);
 }
-button#disappearSidebar, button#modalBtn {
+button#disappearSidebar, button#modalBtn, button#taskClear {
   position: absolute;
   border: none;
   height: 40px;
@@ -147,8 +134,28 @@ button#disappearSidebar, button#modalBtn {
   transform: translateX(-50%);
   cursor: pointer;
 }
+button.btnCreate, button#projectClear{
+  border: none;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, .3);
+  top: 2rem;
+  background-color: var(--font-color);
+  /* transform: translateX(-50%); */
+  cursor: pointer;
+}
 button#modalBtn {
   top: 5rem;
+}
+button#taskClear{
+  top: 8rem;
+}
+#projectBtns{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 1em;
 }
 .formDisplay {
   animation: fadeIn 2s;
@@ -198,10 +205,9 @@ button#modalBtn {
   background-color: var(--modal-color);
   margin: 15% auto;
   padding: 20px;
-  width: 60%;
+  width: 40%;
   border-radius: 25px;
 }
-
 .close,
 .taskDelete {
   color: var(--dark-blue);
@@ -209,18 +215,53 @@ button#modalBtn {
   font-size: 28px;
   font-weight: bold;
 }
-
+li.task{
+  display: flex;
+  border: 2px solid var(--light-blue);
+  border-radius: 15%;
+  background-color: var(--lightest-blue-blur);
+  text-align: center;
+  padding: 6px;
+}
 .close:hover,
 .close:focus,
-.taskDelete {
+.taskDelete,
+.btnCreate,
+.projectClear {
   color: black;
   text-decoration: none;
   cursor: pointer;
 }
-input:checked+label{
+input:checked+.taskDivCheck{
   text-decoration: line-through;
 }
-button{
-  border: none;
-  background: none;
+div.taskDate, div.taskPriority{
+  margin-top: 1em;
 }
+input[type="checkbox"]{
+  position: relative;
+
+}
+input::placeholder{
+text-align: center;
+}
+a {
+  color: var(--font-color);
+}
+.footer div {
+  text-align: center;
+  font-size: medium;
+  margin: 0;
+  padding: 0;
+}
+.footer{
+  width: 100vw;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 0;
+  margin: 0;
+}
+
+
+

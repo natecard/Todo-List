@@ -4,83 +4,77 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>To-Do List</title>
   <link rel="shortcut icon" href="./icons/list-ol-solid.svg" type="image/x-icon">
   <script src="https://kit.fontawesome.com/70fab30855.js" crossorigin="anonymous"></script>
-  <script defer src="main.js"></script>
+
 </head>
 <body>
-  <header class="header">Welcome</header>
-  <div class="gridContainer">
+  <header class="header">To-Do List</header>
+  <div class="wrapper">
       <div id="leftSidebar" class="sidebar">
         <button id="disappearSidebar" class="disappear"><i class="fa-sharp fa-solid fa-bars"></i></button>
-        <!-- <button id="modalBtn"><i class="fa-sharp fa-solid fa-circle-plus"></i></button> -->
+        <button id="modalBtn"><i class="fa-sharp fa-solid fa-circle-plus"></i></button>
+        <button id="taskClear"><i class="fa-solid fa-x"></i></button>
           <div id="projectDiv">
-           <h1>Projects</h1>
-           <form action="" data-new-project-form>
-            <input type="text"
-             class="newProject"
-             data-new-project-input
-             placeholder="New Project">
-             <button class="btnCreate">＋
-             </button>
-             <button id="projectClear">ｘ
-            </button>
-           </form>
+            <h1>Projects</h1>
+            <div id="projectBtns">
+              <button class="btnCreate">＋</button>
+              <button id="projectClear">ｘ</button>
+            </div>
+            <form action="" data-new-project-form>
+              <input type="text" size="16"
+              class="newProject"
+              data-new-project-input
+              placeholder="New Project">
+            </form>
             <ul id="projectList" data-projects>
             </ul>
           </div>
       </div>
-      <div class="mainContent">
-        <!-- <h1>Tasks for</h1> -->
-        <h1 id="projectTitle">Tasks for</h1>
-        <div data-tasks-container></div>
-          <form action="" data-new-task-form>
-              <input type="text"
-              id="newTaskAdd"
-              data-new-task-input
-              placeholder="Add Task">
-              <button id="taskBtnCreate">＋
-              </button>
-              <button id="taskClear">ｘ
-              </button>
-            </form>
-            <ul id="taskList" class="list" data-tasks>
-            </ul>
-      </div>
-      <div>
-<!--         <div id="taskModal" class="modal">
-            <div id="taskForm" class="formDisplay">
-              <span class="close">&times;</span>
-              <div class="taskHeading">Create Task</div>
-              <form class="form" id="form" data-new-task-form>
-                <label for="taskTitle">Task:</label>
-                <input type="text" name="taskTitle" id="taskFormTitle" data-taskID>
-                <label for="taskDetails">Description:</label>
-                <input type="text" name="taskDetails" id="taskFormDetails">
-                <label for="dueDate">Date:</label>
-                <input type="date" name="dueDate" id="formDueDate">
-                <label for="taskPriority">Priority:</label>
-                <select name="taskPriority" id="taskFormPriority">
-                  <option value="high">High</option>
-                  <option value="medium">Medium</option>
-                  <option value="low">Low</option>
-                </select>
-                <button id="addTask" class="addTask">Add Task</button>
-              </form>
-              </div>
-              </div> -->
+        <div class="mainContent">
+          <!-- <h1>Tasks for</h1> -->
+          <h1 id="projectTitle"></h1>
+          <div id="taskModal" class="modal">
+              <div id="taskForm" class="formDisplay">
+                <span class="close">&times;</span>
+                <form class="form" id="form" data-new-task-form>
+                  <label for="taskTitle">Task:</label>
+                  <input type="text" placeholder="Add Task" name="taskTitle" id="newTaskAdd" data-new-task-input>
+                  <label for="dueDate">Date:</label>
+                  <input type="date" name="dueDate" id="newTaskDate" data-new-task-date>
+                  <label for="taskPriority">Priority:</label>
+                  <select name="taskPriority" id="taskFormPriority" data-new-task-priority>
+                    <option value="High">High</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Low">Low</option>
+                  </select>
+                  <button id="taskBtnCreate" class="addTask">Add Task</button>
+                </form>
+                </div>
+            </div>
+          <div data-tasks-container></div>
+              <ul id="taskList" class="list" data-tasks>
+              </ul>
         </div>
-      </div>
+        <footer class="footer">
+        <div>© natecard 2022<a href="http://github.com/natecard"><i class="fa-brands fa-github"></i></a></div>
+        </footer>
   </div>
-  <footer class="footer">Example</footer>
-  <template id="task-template">
-    <li class="task">
-      <input class="checkbox"  type="checkbox"/>
-        <label>
-          <span class="custom-checkbox"></span>
-        </label>
-    </li>
-  </template>
+      <template id="task-template">
+        <li class="task">
+          <div class="taskDiv">
+            <input class="checkbox"  type="checkbox"/>
+              <div class="taskDivCheck">
+                <label>
+                <span class="custom-checkbox"></span>
+                </label>
+                <div class="taskDate"></div>
+                <div class="taskPriority"></div>
+              </div>
+          </div>
+        </li>
+      </template>
+  <script src="main.js"></script>
 </body>
 </html>
